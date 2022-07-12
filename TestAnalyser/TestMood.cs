@@ -21,11 +21,30 @@ namespace TestAnalyser
         [Test]
         public void Analyse_nullreturnHappy()
         {
-            string msg = null;
-            MoodAnalyser.Analyser Message = new MoodAnalyser.Analyser(msg);
-            string mood = Message.analyseMood();
-            Assert.AreEqual("Happy", mood);
+            try
+            {
+                string msg = null;
+                MoodAnalyser.Analyser Message = new MoodAnalyser.Analyser(msg);
+                string mood = Message.analyseMood();
+            }
+            catch(MoodAnalyser.Analyser_Exception exp)
+            {
+                Assert.AreEqual("Mood is null", exp.Message);
+            }
         }
-
+        [Test]
+        public void Analyse_EmptyreturnHappy()
+        {
+            try
+            {
+                string msg = "";
+                MoodAnalyser.Analyser Message = new MoodAnalyser.Analyser(msg);
+                string mood = Message.analyseMood();
+            }
+            catch (MoodAnalyser.Analyser_Exception exp)
+            {
+                Assert.AreEqual("Mood cannot be Empty", exp.Message);
+            }
+        }
     }
 }
