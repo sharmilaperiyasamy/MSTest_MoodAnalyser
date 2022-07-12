@@ -18,5 +18,14 @@ namespace TestAnalyser
             string mood = Message.analyseMood();
             Assert.AreEqual("Sad", mood);
         }
+        [Test]
+        public void Analyse_nullreturnHappy()
+        {
+            string msg = null;
+            MoodAnalyser.Analyser Message = new MoodAnalyser.Analyser(msg);
+            string mood = Message.analyseMood();
+            Assert.AreEqual("Happy", mood);
+        }
+
     }
 }
