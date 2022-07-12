@@ -1,0 +1,1 @@
+﻿Console.WriteLine("MS Testing Mood Analyser");
